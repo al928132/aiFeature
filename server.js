@@ -5,7 +5,7 @@ const path = require('node:path');
 const HOST = '0.0.0.0';
 const PORT = process.env.PORT || 3000;
 const OLLAMA_URL = 'http://localhost:11434/api/generate';
-const MODEL = 'gemma4:e2b';
+const MODEL = 'tinyllama';
 
 function sendJson(res, status, payload) {
   res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
