@@ -1,5 +1,5 @@
 # What did you build and why? Which option did you pick? What made you choose it?
-I built an AI-Powered feature thatallows for you to categorize text. You type or paste text into the text field and it will categorize it based on the text. I chose it to challenge myself since I have not heard of or used Ollama before.
+I built an AI-Powered feature that allows for you to categorize text. You type or paste text into the text field and it will categorize it based on the text. I chose it to challenge myself since I have not heard of or used Ollama before.
 # What surprised you? Was anything easier or harder than expected? Did the LLM/API behave differently than you anticipated?
 I was surprised with how easy the set up was. I had the copilot agent set up the files and it gave me instructions on how to use the terminal to set up Ollama. Once I started installing Ollama, the terminal prompted me to work with an AI from the options provided, I went with claude due to familiarity. From there the set up went smoothly.
 # What did you learn about how these services work? If you used Ollama, what was it like running a model locally? If you used a cloud API, what was the experience of managing keys and handling errors?
