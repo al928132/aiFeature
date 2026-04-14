@@ -1,0 +1,10 @@
+{
+  "name": "aifeature",
+  "version": "1.0.0",
+  "description": "Website with LLM text classification via Ollama",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

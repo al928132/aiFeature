@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Text Classifier</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; max-width: 700px; }
+      textarea { width: 100%; min-height: 140px; }
+      button { margin-top: 1rem; padding: 0.5rem 0.9rem; }
+      .result { margin-top: 1rem; font-weight: bold; }
+      .error { margin-top: 1rem; color: #b00020; }
+    </style>
+  </head>
+  <body>
+    <h1>Text Classification (Ollama + gemma4:e2b)</h1>
+    <p>Enter text to classify as <code>feedback</code>, <code>support_ticket</code>, <code>content_tagging</code>, or <code>other</code>.</p>
+
+    <form id="classifier-form">
+      <label for="text">Text</label><br />
+      <textarea id="text" name="text" placeholder="Paste customer feedback, a support request, or content to tag..." required></textarea><br />
+      <button type="submit">Classify</button>
+    </form>
+
+    <div id="result" class="result"></div>
+    <div id="error" class="error"></div>
+
+    <script>
+      const form = document.getElementById('classifier-form');
+      const textEl = document.getElementById('text');
+      const resultEl = document.getElementById('result');
+      const errorEl = document.getElementById('error');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        resultEl.textContent = '';
+        errorEl.textContent = '';
+
+        try {
+          const response = await fetch('/api/classify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: textEl.value })
+          });
+
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || 'Request failed');
+          }
+
+          resultEl.textContent = `Category: ${data.category}`;
+        } catch (error) {
+          errorEl.textContent = error.message;
+        }
+      });
+    </script>
+  </body>
+</html>
